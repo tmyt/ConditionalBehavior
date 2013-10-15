@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ConditionalBehavior</id>
+    <version>0.9</version>
+    <authors>Yutaka Tsumori</authors>
+    <owners>Yutaka Tsumori</owners>
+    <licenseUrl>https://raw.github.com/tmyt/ConditionalBehavior/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Conditional behaviors for Windows Store Apps.</description>
+    <releaseNotes>Prerelease.</releaseNotes>
+    <copyright>Copyright 2013 Yutaka Tsumori</copyright>
+    <tags>Behavior Condition Windows Store Apps</tags>
+  </metadata>
+  <files>
+    <file src="ConditionalBehavior/bin/Release/ConditionalBehavior.dll" target="lib\netcore45" />
+  </files>
+</package>
