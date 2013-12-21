@@ -99,19 +99,19 @@ namespace Gears.ConditionalBehavior.Conditions
     [ContentProperty(Name = "Conditions")]
     public class And : ConditionBase
     {
-        public ConditonCollection Conditions
+        public ConditionCollection Conditions
         {
-            get { return (ConditonCollection)GetValue(ConditionsProperty); }
+            get { return (ConditionCollection)GetValue(ConditionsProperty); }
             private set { SetValue(ConditionsProperty, value); }
         }
 
         public static readonly DependencyProperty ConditionsProperty =
-            DependencyProperty.Register("Conditions", typeof(ConditonCollection), typeof(And), new PropertyMetadata(null));
+            DependencyProperty.Register("Conditions", typeof(ConditionCollection), typeof(And), new PropertyMetadata(null));
 
 
         public And()
         {
-            Conditions = new ConditonCollection();
+            Conditions = new ConditionCollection();
         }
 
         public override bool Result
@@ -123,18 +123,18 @@ namespace Gears.ConditionalBehavior.Conditions
     [ContentProperty(Name = "Conditions")]
     public class Or : ConditionBase
     {
-        public ConditonCollection Conditions
+        public ConditionCollection Conditions
         {
-            get { return (ConditonCollection)GetValue(ConditionsProperty); }
+            get { return (ConditionCollection)GetValue(ConditionsProperty); }
             private set { SetValue(ConditionsProperty, value); }
         }
 
         public static readonly DependencyProperty ConditionsProperty =
-            DependencyProperty.Register("Conditions", typeof(ConditonCollection), typeof(Or), new PropertyMetadata(null));
+            DependencyProperty.Register("Conditions", typeof(ConditionCollection), typeof(Or), new PropertyMetadata(null));
 
         public Or()
         {
-            Conditions = new ConditonCollection();
+            Conditions = new ConditionCollection();
         }
 
         public override bool Result

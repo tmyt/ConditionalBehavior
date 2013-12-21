@@ -53,7 +53,7 @@ namespace Gears.ConditionalBehavior.Conditions.Base
         }
     }
 
-    public class ConditonCollection : DependencyObjectCollection
+    public class ConditionCollection : DependencyObjectCollection
     {
         // nothing to do.
     }
