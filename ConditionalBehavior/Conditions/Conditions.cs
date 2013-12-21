@@ -20,36 +20,6 @@ namespace Gears.ConditionalBehavior.Conditions
 
     public class Equals : TwoValueConditionBase
     {
-        object ChangeType(Type targetType, object from)
-        {
-            var typeInfo = targetType.GetTypeInfo();
-            if (from == null)
-                return typeInfo.IsValueType ? Activator.CreateInstance(targetType) : null;
-            if (typeInfo.IsAssignableFrom(from.GetType().GetTypeInfo()))
-                return from;
-            // Convert
-            var str = from.ToString();
-            return typeInfo.IsEnum ? Enum.Parse(targetType, str) : ConvertType(str, targetType.FullName);
-        }
-
-        private object ConvertType(string from, string type)
-        {
-            try
-            {
-                // Get Internal method
-                var typeName = typeof(EventTriggerBehavior).AssemblyQualifiedName
-                    .Replace(".EventTriggerBehavior,", ".TypeConverterHelper,");
-                var typeConverterHelperType = Type.GetType(typeName);
-                var typeConverterHelperConvert = typeConverterHelperType
-                    .GetRuntimeMethod("Convert", new[] { typeof(string), typeof(string) });
-                return typeConverterHelperConvert.Invoke(null, new object[] { from, type });
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
         public override bool Result
         {
             get
@@ -58,12 +28,12 @@ namespace Gears.ConditionalBehavior.Conditions
                 {
                     if (LeftValue is string && !(RightValue is string))
                     {
-                        var value = ChangeType(RightValue.GetType(), LeftValue);
+                        var value = TypeConverter.ChangeType(RightValue.GetType(), LeftValue);
                         return RightValue.Equals(value);
                     }
                     if (!(LeftValue is string) && RightValue is string)
                     {
-                        var value = ChangeType(LeftValue.GetType(), RightValue);
+                        var value = TypeConverter.ChangeType(LeftValue.GetType(), RightValue);
                         return LeftValue.Equals(value);
                     }
                 }

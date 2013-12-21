@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conditions\Base\ConditionBase.cs" />
+    <Compile Include="Conditions\Base\TypeConverter.cs" />
     <Compile Include="Conditions\Conditions.cs" />
     <Compile Include="If.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

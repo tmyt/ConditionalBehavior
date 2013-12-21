@@ -36,6 +36,17 @@ namespace Gears.ConditionalBehavior.Conditions.Base
         {
             get
             {
+                // 左が文字列 && 右が非文字列 の場合、右の型に合わせる
+                if (LeftValue is string && !(RightValue is string))
+                {
+                    LeftValue = TypeConverter.ChangeType(RightValue.GetType(), LeftValue);
+                }
+                // そうでない場合、左の型に合わせる
+                else
+                {
+                    RightValue = TypeConverter.ChangeType(LeftValue.GetType(), RightValue);
+                }
+                // 結果が比較可能でない場合false
                 if (LeftValue as IComparable == null || RightValue as IComparable == null) return false;
                 return Compare(LeftValue as IComparable, RightValue as IComparable);
             }
